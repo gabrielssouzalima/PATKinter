@@ -1,0 +1,36 @@
+from tkinter import *
+from tkinter import ttk
+
+def calculadoraIMC():
+    try:
+        peso = float(entry_peso.get())
+        altura = float(entry_altura.get())
+        resultadoIMC = round(peso / (altura * altura),2)
+        resultadoMSG = f'SEU IMC É: {resultadoIMC}'
+        texto_Resultado['text'] = resultadoMSG 
+    except ValueError:
+        texto_Resultado['text'] = 'INSIRA UM VALOR VÁLIDO.'
+        
+    except ValueError:
+        resultadoMSG = 'INSIRA UM VALOR VÁLIDO.'
+
+janela = Tk()
+janela.title('CALCULADORA DE IMC')
+janela.geometry('200x150')
+texto_Superior = Label(janela, text = "CALCULE SEU IMC:")
+texto_Superior.grid(row = 0, column = 0, padx= 10, pady=10)
+label_peso = Label(janela, text='DIGITE SEU PESO(kg) :')
+label_peso.grid(row=1, column=0)
+entry_peso = Entry(janela)
+entry_peso.grid(row=1, column=1)
+
+
+label_altura = Label(janela, text='DIGITE SUA ALTURA(m):')
+label_altura.grid(row=2, column=0)
+entry_altura = Entry(janela)
+entry_altura.grid(row=2, column=1)
+botao = Button(janela, text = "Calcular", command = calculadoraIMC)
+botao.grid(column = 0, row = 5)
+texto_Resultado = Label(janela, text = "")
+texto_Resultado.grid(row = 4, column = 0)
+janela.mainloop()
