@@ -1,0 +1,32 @@
+from tkinter import *
+from tkinter import ttk
+
+def calcularMilhas():
+    try:
+        milhas = float(entry_peso.get())
+        resultadoKM = round(milhas * 1.60934, 3)
+        resultadoMSG = f'RESULTADO APROXIMADO: {resultadoKM}'
+        texto_Resultado['text'] = resultadoMSG 
+    except ValueError:
+        texto_Resultado['text'] = 'INSIRA UM VALOR VÁLIDO.'
+
+janela = Tk()
+janela.title('CONVERSÃO MILHAS PARA KM')
+janela.geometry('400x150')
+
+texto_Superior = Label(janela, text="CONVERTA MILHAS EM KM:")
+texto_Superior.grid(row=0, column=0, padx=10, pady=10)
+
+label_peso = Label(janela, text='DIGITE AS MILHAS:')
+label_peso.grid(row=1, column=0)
+
+entry_peso = Entry(janela)
+entry_peso.grid(row=1, column=1)
+
+botao = Button(janela, text="Calcular", command=calcularMilhas)
+botao.grid(column=0, row=5)
+
+texto_Resultado = Label(janela, text="")
+texto_Resultado.grid(row=4, column=0)
+
+janela.mainloop()
